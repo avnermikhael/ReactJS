@@ -4,7 +4,7 @@ function hello(props) {
   return (
     <div>
       <h3>
-        Hello {props.name} your email is {props.email}
+        Hello {props.name} you are {props.age} year(s) old, {props.gender}
       </h3>
     </div>
   );

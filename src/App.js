@@ -1,15 +1,24 @@
 import React from "react";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
-import { Container, Row, Col } from "reactstrap";
-import Hello from "./components/hello";
-import { Button } from "reactstrap";
+import { Container } from "reactstrap";
+// import Hello from "./components/hello";
+// import { Button } from "reactstrap";
+// import Clock from "./components/clock";
+// import Greetings from "./components/greetings";
+import Userprofile from "./components/userprofile";
 
 function App() {
   return (
     <Container>
-      <Hello name="Edith" />
+      {/* <Greetings name="Avner" age="31" gender="male" /> */}
+      <Userprofile />
     </Container>
+
+    // <Container>
+    //   <Hello name="Edith" email="edith@hello.com" />
+    //   <Clock />
+    // </Container>
     // <div className="App">
     //   <header className="App-header">
     //     <img src={logo} className="App-logo" alt="logo" />
