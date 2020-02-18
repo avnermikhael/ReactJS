@@ -7,12 +7,16 @@ import { Container } from "reactstrap";
 // import Clock from "./components/clock";
 // import Greetings from "./components/greetings";
 import Userprofile from "./components/userprofile";
+// import Usinghook from "./components/usinghook";
+// import Example from "./components/example";
 
 function App() {
   return (
     <Container>
       {/* <Greetings name="Avner" age="31" gender="male" /> */}
       <Userprofile />
+      {/* <Usinghook /> */}
+      {/* <Example /> */}
     </Container>
 
     // <Container>
