@@ -43,6 +43,11 @@ const Navigation = () => {
               Multi Input Form
             </NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink to="/register" tag={RRNavLink}>
+              Register
+            </NavLink>
+          </NavItem>
           {/* <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>
               Options

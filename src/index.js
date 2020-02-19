@@ -11,7 +11,7 @@ import Main from "./components/main";
 import Userprofile from "./components/userprofile";
 import Home from "./components/home";
 import MultiInputForm from "./components/multiinputform";
-
+import Form from "./components/form";
 // ReactDOM.render(<App />, document.getElementById("root"));
 
 const routing = (
@@ -24,6 +24,7 @@ const routing = (
           <Route path="/profile" component={Userprofile} />
           <Route path="/about" component={About} />
           <Route path="/multiinputform" component={MultiInputForm} />
+          <Route path="/register" component={Form} />
 
           <Route component={Notfound} />
         </Switch>
