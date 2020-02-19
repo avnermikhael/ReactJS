@@ -10,6 +10,7 @@ import Notfound from "./components/notfound";
 import Main from "./components/main";
 import Userprofile from "./components/userprofile";
 import Home from "./components/home";
+import MultiInputForm from "./components/multiinputform";
 
 // ReactDOM.render(<App />, document.getElementById("root"));
 
@@ -22,6 +23,8 @@ const routing = (
           <Route path="/home" component={Home} />
           <Route path="/profile" component={Userprofile} />
           <Route path="/about" component={About} />
+          <Route path="/multiinputform" component={MultiInputForm} />
+
           <Route component={Notfound} />
         </Switch>
       </Main>
