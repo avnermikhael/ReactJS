@@ -22,9 +22,10 @@ export default function App() {
             name="username"
             ref={register({
               required: "Username required!",
-              max: 15,
-              min: 4,
-              maxLength: 80
+              minLength: {
+                value: 4,
+                message: "Minimal 4 karakter!"
+              }
             })}
           />
           {errors.username && <p>{errors.username.message}</p>}
