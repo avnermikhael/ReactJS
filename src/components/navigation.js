@@ -44,6 +44,11 @@ const Navigation = () => {
               Register
             </NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink to="/axios" tag={RRNavLink}>
+              Axios
+            </NavLink>
+          </NavItem>
         </Nav>
       </Collapse>
     </Navbar>
