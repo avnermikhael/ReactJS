@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Form, Label } from "reactstrap";
 import "../../src/formcss.css";
+
+//classname="px-2"
 
 export default function App() {
   const { register, errors, handleSubmit, watch } = useForm({});
@@ -43,6 +45,7 @@ export default function App() {
                 message: "Invalid email address"
               }
             })}
+            //"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
           />
           {errors.email && <p>{errors.email.message}</p>}
         </div>
@@ -58,6 +61,10 @@ export default function App() {
                 value: 8,
                 message: "Password must have at least 8 characters"
               }
+              // pattern: {
+              //   value: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$! %*?&])[A-Za-z\d@$!%*?&]{8,}$",
+              //   message:"At least 8 character, one uppercase, one lowercase, a number and special character"
+              // }
             })}
           />
           {errors.password && <p>{errors.password.message}</p>}
