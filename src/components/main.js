@@ -8,8 +8,8 @@ const Main = props => {
       <Navigation />
       <Container fluid={true} className="mt-2">
         <Col>{props.children}</Col>
-        <footer class="footer">
-          <div class="container">
+        <footer className="py-4">
+          <div class="container text-center">
             <span class="text-muted">Copyright @Avner</span>
           </div>
         </footer>
