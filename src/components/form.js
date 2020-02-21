@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { Form, Label } from "reactstrap";
-import "../../src/formcss.css";
+// import "../../src/formcss.css";
 
 //classname="px-2"
 
@@ -14,8 +14,8 @@ export default function App() {
   };
 
   return (
-    <div>
-      <Form onSubmit={e => e.preventDefault()}>
+    <div class="card-container">
+      <Form onSubmit={e => e.preventDefault()} className="px-3 pb-4">
         <div className="form-group">
           <Label for="exampleEmail">Username</Label>
           <input
@@ -45,7 +45,6 @@ export default function App() {
                 message: "Invalid email address"
               }
             })}
-            //"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
           />
           {errors.email && <p>{errors.email.message}</p>}
         </div>
@@ -61,10 +60,6 @@ export default function App() {
                 value: 8,
                 message: "Password must have at least 8 characters"
               }
-              // pattern: {
-              //   value: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$! %*?&])[A-Za-z\d@$!%*?&]{8,}$",
-              //   message:"At least 8 character, one uppercase, one lowercase, a number and special character"
-              // }
             })}
           />
           {errors.password && <p>{errors.password.message}</p>}
@@ -83,31 +78,6 @@ export default function App() {
           {errors.password_repeat && <p>{errors.password_repeat.message}</p>}
         </div>
         <input type="submit" onClick={handleSubmit(onSubmit)} />
-
-        {/* <FormGroup>
-          <Label for="examplePassword">Password</Label>
-          <Input
-            type="password"
-            placeholder="Password"
-            name="password"
-            ref={register({ required: true, min: 8, maxLength: 12 })}
-          />
-          {errors.password && <p>{errors.password.message}</p>}
-        </FormGroup>
-        <FormGroup>
-          <Label for="examplePassword">Confirm Password</Label>
-          <Input
-            type="password"
-            placeholder="Confirm Password"
-            name="confirm_password"
-            ref={register({
-              validate: value =>
-                value === password.current || "The passwords do not match"
-            })}
-          />
-          {errors.confirm_password && <p>{errors.confirm_password.message}</p>}
-        </FormGroup> */}
-        {/* <Input type="submit" /> */}
       </Form>
     </div>
   );

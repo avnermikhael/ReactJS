@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div class="card-container">
       <Avatar />
-      <h3>Taylow Swift</h3>
+      <h3>Taylor Swift</h3>
       <h6>Singer</h6>
       <p>
         <Bio />

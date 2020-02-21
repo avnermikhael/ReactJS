@@ -10,9 +10,10 @@ import Notfound from "./components/notfound";
 import Main from "./components/main";
 import Userprofile from "./components/userprofile";
 import Home from "./components/home";
-import MultiInputForm from "./components/multiinputform";
 import Form from "./components/form";
 import Axios from "./components/axios";
+import Registerbook from "./components/registerbook";
+import "./App.css";
 // ReactDOM.render(<App />, document.getElementById("root"));
 
 const routing = (
@@ -24,10 +25,9 @@ const routing = (
           <Route path="/home" component={Home} />
           <Route path="/profile" component={Userprofile} />
           <Route path="/about" component={About} />
-          <Route path="/multiinputform" component={MultiInputForm} />
           <Route path="/register" component={Form} />
           <Route path="/axios" component={Axios} />
-
+          <Route path="/registerbook" component={Registerbook} />
           <Route component={Notfound} />
         </Switch>
       </Main>

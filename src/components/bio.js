@@ -4,7 +4,7 @@ function bio(props) {
   return (
     <div>
       <h7>
-        <p align="center">
+        <p align="justify" className="mx-4">
           Taylor Alison Swift (born December 13, 1989) is an American
           singer-songwriter. She is known for narrative songs about her personal
           life, which have received widespread media coverage. At age 14, Swift

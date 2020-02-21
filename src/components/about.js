@@ -6,7 +6,7 @@ class About extends React.Component {
     <div class="card-container" height="500px" width="800px">
       <Avatar2 />
       <h3>13 Management Team</h3>
-      <p>
+      <p align="justify" className="mx-4">
         13 MANAGEMENT is the management company for Taylor. Employees include
         radio veteran Frank Bell in the position of "Dir./Radio and Researc" as
         well as Robert Allen. Bell manages radio outreach and developes

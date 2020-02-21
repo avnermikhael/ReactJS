@@ -1,65 +1,58 @@
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-
-// function App() {
-//   const [data, setData] = useState({ hits: [] });
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       const result = await axios(
-//         "https://hn.algolia.com/api/v1/search?query=redux"
-//       );
-//       setData(result.data);
-//     };
-//     fetchData();
-//   }, []);
-
-//   return (
-//     <div className="card-container">
-//       <ul>
-//         {data.hits.map(item => (
-//           <li key={item.objectID}>
-//             <a href={item.url}>{item.title}</a> <span>{item.author}</span>
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// }
-
-// export default App;
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
-  const url = "https://jsonplaceholder.typicode.com/users";
-  const [data, setData] = useState([]);
+  const url = "http://localhost:3000/books";
+
+  const [data, setData] = useState({ data: [] });
   useEffect(() => {
     axios.get(url).then(json => setData(json.data));
   }, []);
+
+  function onDelete(id) {
+    axios
+      .delete(`http://localhost:3000/books/${id}`)
+      .then(alert("Book deleted!"));
+    window.location.reload(false);
+  }
+
   const renderTable = () => {
-    return data.map(user => {
+    return data.data.map(book => {
       return (
-        <tr>
-          <td>{user.name}</td>
-          <td>{user.email}</td>
-          <td>{user.address.street}</td>
-          <td>{user.company.name}</td>
+        <tr key={book.id}>
+          <td>{book.title}</td>
+          <td>{book.author}</td>
+          <td>{book.page}</td>
+          <td>{book.language}</td>
+          <td>{book.publisher_id}</td>
+          <td>
+            <button className="button btn-warning btn-sm btn-block">
+              Edit
+            </button>
+            <button
+              className="button btn-danger btn-sm btn-block"
+              onClick={() => onDelete(book.id)}
+            >
+              Delete
+            </button>
+          </td>
         </tr>
       );
     });
   };
 
   return (
-    <div class="card-container">
+    <div className="table-container">
       <h5>Users</h5>
-      <table id="users" border="1">
+      <table class="table table-bordered">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th>Company</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Page</th>
+            <th>Language</th>
+            <th>Publisher ID</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>{renderTable()}</tbody>
