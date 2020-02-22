@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function App() {
   const url = "http://localhost:3000/books";
@@ -26,9 +27,11 @@ function App() {
           <td>{book.language}</td>
           <td>{book.publisher_id}</td>
           <td>
-            <button className="button btn-warning btn-sm btn-block">
-              Edit
-            </button>
+            <Link to={"/updatebook/" + book.id}>
+              <button className="button btn-warning btn-sm btn-block">
+                Edit
+              </button>{" "}
+            </Link>
             <button
               className="button btn-danger btn-sm btn-block"
               onClick={() => onDelete(book.id)}

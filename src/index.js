@@ -13,6 +13,7 @@ import Home from "./components/home";
 import Form from "./components/form";
 import Axios from "./components/axios";
 import Registerbook from "./components/registerbook";
+import Updatebook2 from "./components/updatebook2";
 import "./App.css";
 // ReactDOM.render(<App />, document.getElementById("root"));
 
@@ -28,6 +29,7 @@ const routing = (
           <Route path="/register" component={Form} />
           <Route path="/axios" component={Axios} />
           <Route path="/registerbook" component={Registerbook} />
+          <Route path="/updatebook/:id" component={Updatebook2} />
           <Route component={Notfound} />
         </Switch>
       </Main>

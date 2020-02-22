@@ -12,7 +12,8 @@ export default function App() {
     axios
       .post(`http://localhost:3000/books`, { data })
       .then(alert("Book added!"));
-    document.getElementById("registerbookform").reset();
+    // document.getElementById("registerbookform").reset();
+    window.location.replace("/axios");
   };
 
   return (
