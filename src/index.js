@@ -4,13 +4,16 @@ import "./App.css";
 import Counters from "./components/Counter";
 import SearchForm from "./components/SearchForm";
 import Repos from "./components/Repos";
+import SessionStorage from "./components/SessionStorage";
+
 function App() {
   return (
     <div className="App">
-      <h1>Search GitHub Repos</h1>
-      <SearchForm />
+      <h1>Counter</h1>
+      {/* <SearchForm />
       <Counters />
-      <Repos />
+      <Repos /> */}
+      <SessionStorage />
     </div>
   );
 }
