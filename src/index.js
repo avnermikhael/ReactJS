@@ -21,6 +21,7 @@ import Showalluser from "./components/showalluser";
 import Editrole from "./components/editrole";
 import setAuthToken from "./components/setauthtoken";
 import Showorder from "./components/showorder";
+import Showuserorder from "./components/showuserorder";
 // ReactDOM.render(<App />, document.getElementById("root"));
 
 const role = localStorage.getItem("jwtRole");
@@ -45,6 +46,7 @@ const routing = (
                 <Route path="/signin" component={Signin} />
                 <Route path="/logout" component={Logout} />
                 <Route path="/editrole/:id" component={Editrole} />
+                <Route path="/showuserorder/:id" component={Showuserorder} />
 
                 <Route component={Notfound} />
               </Switch>

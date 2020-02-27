@@ -35,11 +35,19 @@ function App() {
                 );
               } else {
                 return (
-                  <Link to={"/editrole/" + user.id}>
-                    <button className="button btn-warning btn-sm btn-block">
-                      Edit Role
-                    </button>
-                  </Link>
+                  <>
+                    <Link to={"/editrole/" + user.id}>
+                      <button className="button btn-warning btn-sm btn-block">
+                        Edit Role
+                      </button>
+                    </Link>
+
+                    <Link to={"/showuserorder/" + user.id}>
+                      <button className="button btn-warning btn-sm btn-block">
+                        Show Orders
+                      </button>
+                    </Link>
+                  </>
                 );
               }
             })()}
