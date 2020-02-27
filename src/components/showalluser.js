@@ -37,13 +37,13 @@ function App() {
                 return (
                   <>
                     <Link to={"/editrole/" + user.id}>
-                      <button className="button btn-warning btn-sm btn-block">
+                      <button className="button btn-warning btn-sm btn-block mb-2">
                         Edit Role
                       </button>
                     </Link>
 
                     <Link to={"/showuserorder/" + user.id}>
-                      <button className="button btn-warning btn-sm btn-block">
+                      <button className="button btn-primary btn-sm btn-block">
                         Show Orders
                       </button>
                     </Link>
