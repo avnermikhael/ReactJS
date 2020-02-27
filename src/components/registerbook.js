@@ -10,7 +10,7 @@ export default function App() {
   const { register, errors, handleSubmit } = useForm({});
   const onSubmit = async data => {
     axios
-      .post(`http://localhost:3000/books`, { data })
+      .post(`http://localhost:8080/books`, { data })
       .then(alert("Book added!"));
     // document.getElementById("registerbookform").reset();
     window.location.replace("/axios");

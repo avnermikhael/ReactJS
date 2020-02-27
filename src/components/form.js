@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { Form, Label } from "reactstrap";
+import axios from "axios";
+
 // import "../../src/formcss.css";
 
 //classname="px-2"
@@ -9,13 +11,41 @@ export default function App() {
   const { register, errors, handleSubmit, watch } = useForm({});
   const password = useRef({});
   password.current = watch("password", "");
+
   const onSubmit = async data => {
-    alert(JSON.stringify(data));
+    console.log(data);
+    axios
+      .post(`http://localhost:8080/register`, {
+        name: data.name,
+        username: data.username,
+        email: data.email,
+        password: data.password,
+        roles: ["user"]
+      })
+      .then(alert("Register successful!"));
+    // document.getElementById("registerbookform").reset();
+    window.location.replace("/");
   };
 
   return (
     <div class="card-container">
       <Form onSubmit={e => e.preventDefault()} className="px-3 pb-4">
+        <div className="form-group">
+          <Label for="exampleEmail">Name</Label>
+          <input
+            type="text"
+            placeholder="Name"
+            name="name"
+            ref={register({
+              required: "Name required!",
+              minLength: {
+                value: 4,
+                message: "Minimal 4 karakter!"
+              }
+            })}
+          />
+          {errors.name && <p>{errors.name.message}</p>}
+        </div>
         <div className="form-group">
           <Label for="exampleEmail">Username</Label>
           <input

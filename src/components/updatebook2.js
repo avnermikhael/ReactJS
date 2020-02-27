@@ -22,7 +22,7 @@ class EditBook extends Component {
   getBookDetails() {
     let bookId = this.props.match.params.id;
     axios
-      .get(`http://localhost:3000/books/${bookId}`)
+      .get(`http://localhost:8080/books/${bookId}`)
       .then(response => {
         this.setState(
           {
@@ -45,7 +45,7 @@ class EditBook extends Component {
     axios
       .request({
         method: "put",
-        url: `http://localhost:3000/books/${bookId}`,
+        url: `http://localhost:8080/books/${bookId}`,
         data: newBook
       })
       .then(response => {
@@ -104,7 +104,7 @@ class EditBook extends Component {
               name="author"
               ref="author"
               onChange={this.handleInputChange}
-              onClick="this.value=''"
+              // onClick="this.value=''"
             />
           </div>
           <div className="form-group">
@@ -115,7 +115,7 @@ class EditBook extends Component {
               name="page"
               ref="page"
               onChange={this.handleInputChange}
-              onClick="this.value=''"
+              // onClick="this.value=''"
             />
           </div>
           <div className="form-group">
@@ -126,7 +126,7 @@ class EditBook extends Component {
               name="language"
               ref="language"
               onChange={this.handleInputChange}
-              onClick="this.value=''"
+              // onClick="this.value=''"
             />
           </div>
           <div className="form-group">
@@ -137,7 +137,7 @@ class EditBook extends Component {
               name="publisher_id"
               ref="publisher_id"
               onChange={this.handleInputChange}
-              onClick="this.value=''"
+              // onClick="this.value=''"
             />
           </div>
           <input type="submit" value="Save" className="btn" />

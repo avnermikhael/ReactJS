@@ -4,7 +4,7 @@ import Bio from "./bio";
 
 const Home = () => {
   return (
-    <div class="card-container">
+    <div className="card-container">
       <Avatar />
       <h3>Taylor Swift</h3>
       <h6>Singer</h6>
@@ -12,7 +12,7 @@ const Home = () => {
         <Bio />
       </p>
 
-      <div class="skills">
+      <div className="skills">
         <h6>Albums</h6>
         <ul>
           <li>Taylor Swift (2006)</li>

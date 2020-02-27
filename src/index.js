@@ -14,28 +14,70 @@ import Form from "./components/form";
 import Axios from "./components/axios";
 import Registerbook from "./components/registerbook";
 import Updatebook2 from "./components/updatebook2";
+import Signin from "./components/signin";
 import "./App.css";
+import Logout from "./components/logout";
+import Showalluser from "./components/showalluser";
+import Editrole from "./components/editrole";
+import setAuthToken from "./components/setauthtoken";
 // ReactDOM.render(<App />, document.getElementById("root"));
+
+const role = localStorage.getItem("jwtRole");
 
 const routing = (
   <Router>
     <Switch>
       <Main>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/home" component={Home} />
-          <Route path="/profile" component={Userprofile} />
-          <Route path="/about" component={About} />
-          <Route path="/register" component={Form} />
-          <Route path="/axios" component={Axios} />
-          <Route path="/registerbook" component={Registerbook} />
-          <Route path="/updatebook/:id" component={Updatebook2} />
-          <Route component={Notfound} />
-        </Switch>
+        {(() => {
+          if (role == "ADMIN") {
+            return (
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/home" component={Home} />
+                <Route path="/profile" component={Userprofile} />
+                <Route path="/about" component={About} />
+
+                <Route path="/axios" component={Axios} />
+                <Route path="/showalluser" component={Showalluser} />
+                <Route path="/registerbook" component={Registerbook} />
+                <Route path="/updatebook/:id" component={Updatebook2} />
+                <Route path="/signin" component={Signin} />
+                <Route path="/logout" component={Logout} />
+                <Route path="/editrole/:id" component={Editrole} />
+
+                <Route component={Notfound} />
+              </Switch>
+            );
+          } else if (role == "USER") {
+            return (
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/home" component={Home} />
+                <Route path="/profile" component={Userprofile} />
+                <Route path="/about" component={About} />
+                <Route path="/axios" component={Axios} />
+                <Route path="/logout" component={Logout} />
+                <Route component={Notfound} />
+              </Switch>
+            );
+          } else {
+            return (
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/home" component={Home} />
+                <Route path="/signin" component={Signin} />
+                <Route path="/register" component={Form} />
+                <Route component={Notfound} />
+              </Switch>
+            );
+          }
+        })()}
       </Main>
     </Switch>
   </Router>
 );
+const token = localStorage.getItem("jwtToken");
+setAuthToken(token);
 
 ReactDOM.render(routing, document.getElementById("root"));
 // If you want your app to work offline and load faster, you can change
