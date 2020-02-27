@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 
 function App() {
   const url = "http://localhost:8080/books";
@@ -15,6 +15,15 @@ function App() {
       .delete(`http://localhost:8080/books/${id}`)
       .then(alert("Book deleted!"));
     window.location.reload(false);
+  }
+
+  function addOrder(id_buku) {
+    const id_user = localStorage.getItem("jwtId");
+
+    axios
+      .post(`http://localhost:8080/orders/` + id_buku + "/" + id_user)
+      .then(alert("Book Rented!"));
+    window.location.replace("/showorder");
   }
 
   const role = localStorage.getItem("jwtRole");
@@ -49,9 +58,14 @@ function App() {
                 );
               } else {
                 return (
-                  <button className="button btn-warning btn-sm btn-block">
+                  // <Link to={"/addorder/" + book.id}>
+                  <button
+                    className="button btn-warning btn-sm btn-block"
+                    onClick={() => addOrder(book.id)}
+                  >
                     Rent
                   </button>
+                  // </Link>
                 );
               }
             })()}

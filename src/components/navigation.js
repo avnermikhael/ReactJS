@@ -113,6 +113,12 @@ const Navigation = () => {
             </NavItem>
 
             <NavItem>
+              <NavLink to="/showorder" tag={RRNavLink}>
+                Your Order
+              </NavLink>
+            </NavItem>
+
+            <NavItem>
               <NavLink to="/logout" tag={RRNavLink}>
                 Sign Out
               </NavLink>
