@@ -9,7 +9,7 @@ class EditRole extends Component {
         name: "",
         username: "",
         email: "",
-        roles: []
+        admin: ""
       }
     };
 
@@ -27,11 +27,7 @@ class EditRole extends Component {
       .then(response => {
         this.setState(
           {
-            name: response.data.data.name,
-            username: response.data.data.username,
-            email: response.data.data.email,
-            roles: response.data.data.roles[0].name
-            // name: response.data.name
+            status: response.data.data.status
           },
           () => {
             console.log(response.data.data.name);
@@ -43,6 +39,7 @@ class EditRole extends Component {
 
   editUser(newUser) {
     let userId = this.props.match.params.id;
+    console.log(newUser);
     axios
       .request({
         method: "put",
@@ -51,17 +48,24 @@ class EditRole extends Component {
       })
       .then(response => {
         this.props.history.push("/showalluser");
+        // window.location.reload();
       })
       .catch(err => console.log(err));
     // console.log(newBook);
   }
 
-  onSubmit(e) {
+  activateUser(e) {
     const newUser = {
-      name: this.state.name,
-      username: this.state.username,
-      email: this.state.email,
-      roles: ["ADMIN"]
+      status: true
+    };
+    console.log(newUser);
+    this.editUser(newUser);
+    e.preventDefault();
+  }
+
+  blockUser(e) {
+    const newUser = {
+      status: false
     };
     this.editUser(newUser);
     e.preventDefault();
@@ -80,37 +84,46 @@ class EditRole extends Component {
   render() {
     return (
       <div class="card-container">
-        <h4>Edit Role</h4>
+        <h4>User Status</h4>
         <form
-          // onSubmit={this.onSubmit.bind(this)}
+          onSubmit={this.onSubmit.bind(this)}
           id="registerbookform"
           className="px-3 pb-4"
         >
           <div className="form-group">
             <input
               // onChange={this.handleInputChange}
-              value={this.state.roles}
+              value={(() => {
+                if (this.state.status === false) {
+                  return "Inactive User";
+                } else {
+                  return "Active User";
+                }
+              })()}
               type="text"
-              name="role"
-              ref="role"
+              name="status"
+              ref="status"
               disabled
             />
           </div>
 
           {(() => {
-            if (this.state.roles == "ADMIN") {
+            if (this.state.status === false) {
               return (
-                <button className="button btn-danger btn-sm btn-block">
-                  Revoke Admin
+                <button
+                  className="button btn-primary btn-sm btn-block"
+                  // onClick={() => this.activateUser.bind(this)}
+                >
+                  Activate User
                 </button>
               );
             } else {
               return (
                 <button
                   className="button btn-warning btn-sm btn-block"
-                  onClick={() => this.onSubmit.bind(this)}
+                  // onClick={() => this.blockUser.bind(this)}
                 >
-                  Make Admin
+                  Block User
                 </button>
               );
             }

@@ -19,7 +19,7 @@ import "./App.css";
 import Logout from "./components/logout";
 import Showalluser from "./components/showalluser";
 import Editrole from "./components/editrole";
-import setAuthToken from "./components/setauthtoken";
+// import setAuthToken from "./components/setauthtoken";
 import Showorder from "./components/showorder";
 import Showuserorder from "./components/showuserorder";
 // ReactDOM.render(<App />, document.getElementById("root"));
@@ -31,7 +31,7 @@ const routing = (
     <Switch>
       <Main>
         {(() => {
-          if (role == "ADMIN") {
+          if (role === "true") {
             return (
               <Switch>
                 <Route exact path="/" component={Home} />
@@ -51,7 +51,7 @@ const routing = (
                 <Route component={Notfound} />
               </Switch>
             );
-          } else if (role == "USER") {
+          } else if (role === "false") {
             return (
               <Switch>
                 <Route exact path="/" component={Home} />
@@ -60,7 +60,6 @@ const routing = (
                 <Route path="/about" component={About} />
                 <Route path="/axios" component={Axios} />
                 <Route path="/showorder" component={Showorder} />
-
                 <Route path="/logout" component={Logout} />
                 <Route component={Notfound} />
               </Switch>
@@ -81,8 +80,8 @@ const routing = (
     </Switch>
   </Router>
 );
-const token = localStorage.getItem("jwtToken");
-setAuthToken(token);
+// const token = localStorage.getItem("jwtToken");
+// setAuthToken(token);
 
 ReactDOM.render(routing, document.getElementById("root"));
 // If you want your app to work offline and load faster, you can change

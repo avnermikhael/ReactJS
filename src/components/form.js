@@ -19,12 +19,11 @@ export default function App() {
         name: data.name,
         username: data.username,
         email: data.email,
-        password: data.password,
-        roles: ["user"]
+        password: data.password
       })
       .then(alert("Register successful!"));
     // document.getElementById("registerbookform").reset();
-    window.location.replace("/");
+    window.location.replace("/signin");
   };
 
   return (

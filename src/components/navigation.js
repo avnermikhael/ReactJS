@@ -19,13 +19,13 @@ const Navigation = () => {
   if (!token) {
     return (
       <nav className="navbar navbar-expand-xl fixed-top navbar-dark bg-dark">
-        <NavbarBrand>Taylor Swift</NavbarBrand>
+        <NavbarBrand>Travel Time</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
               <NavLink to="/signin" tag={RRNavLink}>
-                Welcome
+                Sign In
               </NavLink>
             </NavItem>
 
@@ -38,10 +38,10 @@ const Navigation = () => {
         </Collapse>
       </nav>
     );
-  } else if (token && role === "ADMIN") {
+  } else if (token && role === "true") {
     return (
       <nav className="navbar navbar-expand-xl fixed-top navbar-dark bg-dark">
-        <NavbarBrand href={"/"}>Taylor Swift</NavbarBrand>
+        <NavbarBrand href={"/"}>Travel Time</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -90,7 +90,7 @@ const Navigation = () => {
   } else {
     return (
       <nav className="navbar navbar-expand-xl fixed-top navbar-dark bg-dark">
-        <NavbarBrand href={"/"}>Taylor Swift</NavbarBrand>
+        <NavbarBrand href={"/"}>Travel Time</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>

@@ -10,7 +10,7 @@ function App() {
     axios.get(url).then(json => setData(json.data));
   }, []);
 
-  const role_id = localStorage.getItem("jwtId");
+  // const role_id = localStorage.getItem("jwtId");
 
   const renderTable = () => {
     return data.data.map(user => {
@@ -22,32 +22,38 @@ function App() {
           <td>{user.email}</td>
           <td>
             {(() => {
-              if (role_id == user.id) {
+              if (user.admin === true) {
                 return (
-                  <Link to={"/editrole/" + user.id}>
-                    <button
-                      className="button btn-danger btn-sm btn-block"
-                      disabled
-                    >
-                      Role Locked
-                    </button>
-                  </Link>
+                  // <Link to={"/editrole/" + user.id}>
+                  <button
+                    className="button btn-danger btn-sm btn-block"
+                    disabled
+                  >
+                    Admin
+                  </button>
+                  // </Link>
                 );
-              } else {
+              } else if (user.status === false) {
                 return (
                   <>
                     <Link to={"/editrole/" + user.id}>
-                      <button className="button btn-warning btn-sm btn-block mb-2">
-                        Edit Role
+                      <button className="button btn-primary btn-sm btn-block mb-2">
+                        Activate User
                       </button>
                     </Link>
 
-                    <Link to={"/showuserorder/" + user.id}>
-                      <button className="button btn-primary btn-sm btn-block">
-                        Show Orders
-                      </button>
-                    </Link>
+                    {/* <Link to={"/showuserorder/" + user.id}> */}
+                    {/* <button className="button btn-warning btn-sm btn-block">
+                      Show Orders
+                    </button> */}
+                    {/* </Link> */}
                   </>
+                );
+              } else if (user.status === true) {
+                return (
+                  <button className="button btn-warning btn-sm btn-block mb-2">
+                    Block User
+                  </button>
                 );
               }
             })()}
@@ -67,7 +73,7 @@ function App() {
             <th>Name</th>
             <th>Username</th>
             <th>Email</th>
-            <th>Modify</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>{renderTable()}</tbody>

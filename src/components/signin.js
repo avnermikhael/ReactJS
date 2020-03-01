@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form } from "reactstrap";
 import axios from "axios";
-import setAuthToken from "./setauthtoken";
+// import setAuthToken from "./setauthtoken";
 import jwt from "jsonwebtoken";
 
 export default function App() {
@@ -20,18 +20,19 @@ export default function App() {
         })
         .then(res => {
           const token = res.data.accessToken;
-          const role = res.data.role;
+          const role = res.data.admin;
           const id_user = res.data.id_user;
           localStorage.setItem("jwtRole", role);
           localStorage.setItem("jwtToken", token);
           localStorage.setItem("jwtId", id_user);
 
-          setAuthToken(token);
-          console.log(jwt.decode(token));
+          // setAuthToken(token);
+          // console.log(jwt.decode(token));
           window.location.replace("/");
         });
     } catch (err) {
-      console.log(err);
+      alert(err.response.data.reason);
+      window.location.reload();
     }
   };
 
