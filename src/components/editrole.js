@@ -12,8 +12,6 @@ class EditRole extends Component {
         admin: ""
       }
     };
-
-    // this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   componentWillMount() {
@@ -30,7 +28,7 @@ class EditRole extends Component {
             status: response.data.data.status
           },
           () => {
-            console.log(response.data.data.name);
+            console.log(response.data.data.status);
           }
         );
       })
@@ -39,7 +37,7 @@ class EditRole extends Component {
 
   editUser(newUser) {
     let userId = this.props.match.params.id;
-    console.log(newUser);
+    // console.log(newUser);
     axios
       .request({
         method: "put",
@@ -48,51 +46,36 @@ class EditRole extends Component {
       })
       .then(response => {
         this.props.history.push("/showalluser");
-        // window.location.reload();
       })
       .catch(err => console.log(err));
-    // console.log(newBook);
   }
 
-  activateUser(e) {
-    const newUser = {
-      status: true
-    };
-    console.log(newUser);
-    this.editUser(newUser);
+  changeStatus(e) {
+    if (this.state.status === false) {
+      const newUser = {
+        status: true
+      };
+      this.editUser(newUser);
+    } else {
+      const newUser = {
+        status: false
+      };
+      this.editUser(newUser);
+    }
     e.preventDefault();
   }
-
-  blockUser(e) {
-    const newUser = {
-      status: false
-    };
-    this.editUser(newUser);
-    e.preventDefault();
-  }
-
-  // handleInputChange(e) {
-  //   const target = e.target;
-  //   const value = target.value;
-  //   const name = target.name;
-
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // }
 
   render() {
     return (
       <div class="card-container">
         <h4>User Status</h4>
         <form
-          onSubmit={this.onSubmit.bind(this)}
+          onSubmit={this.changeStatus.bind(this)}
           id="registerbookform"
           className="px-3 pb-4"
         >
           <div className="form-group">
             <input
-              // onChange={this.handleInputChange}
               value={(() => {
                 if (this.state.status === false) {
                   return "Inactive User";
@@ -106,28 +89,11 @@ class EditRole extends Component {
               disabled
             />
           </div>
-
-          {(() => {
-            if (this.state.status === false) {
-              return (
-                <button
-                  className="button btn-primary btn-sm btn-block"
-                  // onClick={() => this.activateUser.bind(this)}
-                >
-                  Activate User
-                </button>
-              );
-            } else {
-              return (
-                <button
-                  className="button btn-warning btn-sm btn-block"
-                  // onClick={() => this.blockUser.bind(this)}
-                >
-                  Block User
-                </button>
-              );
-            }
-          })()}
+          <input
+            type="submit"
+            value="Change Status"
+            className="button btn-primary btn-sm btn-block"
+          />
         </form>
       </div>
     );

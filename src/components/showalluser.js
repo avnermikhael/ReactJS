@@ -41,19 +41,15 @@ function App() {
                         Activate User
                       </button>
                     </Link>
-
-                    {/* <Link to={"/showuserorder/" + user.id}> */}
-                    {/* <button className="button btn-warning btn-sm btn-block">
-                      Show Orders
-                    </button> */}
-                    {/* </Link> */}
                   </>
                 );
               } else if (user.status === true) {
                 return (
-                  <button className="button btn-warning btn-sm btn-block mb-2">
-                    Block User
-                  </button>
+                  <Link to={"/editrole/" + user.id}>
+                    <button className="button btn-warning btn-sm btn-block mb-2">
+                      Block User
+                    </button>
+                  </Link>
                 );
               }
             })()}

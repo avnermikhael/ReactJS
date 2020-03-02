@@ -34,6 +34,12 @@ const Navigation = () => {
                 Register
               </NavLink>
             </NavItem>
+
+            <NavItem>
+              <NavLink to="/axios" tag={RRNavLink}>
+                Articles
+              </NavLink>
+            </NavItem>
           </Nav>
         </Collapse>
       </nav>
@@ -63,7 +69,7 @@ const Navigation = () => {
 
             <NavItem>
               <NavLink to="/axios" tag={RRNavLink}>
-                Book List
+                Review Article
               </NavLink>
             </NavItem>
 
@@ -73,11 +79,6 @@ const Navigation = () => {
               </NavLink>
             </NavItem>
 
-            <NavItem>
-              <NavLink to="/registerbook" tag={RRNavLink}>
-                Book Register
-              </NavLink>
-            </NavItem>
             <NavItem>
               <NavLink to="/logout" tag={RRNavLink}>
                 Sign Out
@@ -108,7 +109,13 @@ const Navigation = () => {
 
             <NavItem>
               <NavLink to="/axios" tag={RRNavLink}>
-                Book List
+                Your Article
+              </NavLink>
+            </NavItem>
+
+            <NavItem>
+              <NavLink to="/postarticle" tag={RRNavLink}>
+                Create Article
               </NavLink>
             </NavItem>
 

@@ -3,54 +3,66 @@ import axios from "axios";
 import { Link, Route } from "react-router-dom";
 
 function App() {
-  const url = "http://localhost:8080/books";
+  const userId = localStorage.getItem("jwtId");
+
+  const url = "http://localhost:8080/articles";
+  const url2 = `http://localhost:8080/article/${userId}`;
+  const url3 = "http://localhost:8080/activearticles";
+
+  const role = localStorage.getItem("jwtRole");
 
   const [data, setData] = useState({ data: [] });
+
   useEffect(() => {
-    axios.get(url).then(json => setData(json.data));
+    if (role === "true") {
+      axios.get(url).then(json => setData(json.data));
+    } else if (role === "false") {
+      axios.get(url2).then(json => setData(json.data));
+    } else {
+      axios.get(url3).then(json => setData(json.data));
+    }
   }, []);
 
   function onDelete(id) {
     axios
-      .delete(`http://localhost:8080/books/${id}`)
-      .then(alert("Book deleted!"));
+      .delete(`http://localhost:8080/articles/${id}`)
+      .then(alert("Article deleted!"));
     window.location.reload(false);
   }
 
-  function addOrder(id_buku) {
-    const id_user = localStorage.getItem("jwtId");
-
-    axios
-      .post(`http://localhost:8080/orders/` + id_buku + "/" + id_user)
-      .then(alert("Book Rented!"));
-    window.location.replace("/showorder");
-  }
-
-  const role = localStorage.getItem("jwtRole");
-
   const renderTable = () => {
-    return data.data.map(book => {
+    return data.data.map(article => {
+      if (article.userId === localStorage.getItem("jwtId")) {
+      }
+
       return (
-        <tr key={book.id}>
-          <td>{book.id}</td>
-          <td>{book.title}</td>
-          <td>{book.author}</td>
-          <td>{book.page}</td>
-          <td>{book.language}</td>
-          <td>{book.publisher_id}</td>
+        <tr key={article.id}>
+          <td>{article.id}</td>
+          <td>{article.title}</td>
+          <td>{article.content}</td>
           <td>
             {(() => {
-              if (role == "ADMIN") {
+              if (article.status === true) {
+                return "Active";
+              } else {
+                return "Inactive / Awaiting Admin Review";
+              }
+            })()}
+          </td>
+
+          <td>
+            {(() => {
+              if (role === "true") {
                 return (
                   <>
-                    <Link to={"/updatebook/" + book.id}>
-                      <button className="button btn-warning btn-sm btn-block">
-                        Edit
+                    <Link to={"/updatearticle/" + article.id}>
+                      <button className="button btn-warning btn-sm btn-block mb-2">
+                        Review
                       </button>
                     </Link>
                     <button
                       className="button btn-danger btn-sm btn-block"
-                      onClick={() => onDelete(book.id)}
+                      onClick={() => onDelete(article.id)}
                     >
                       Delete
                     </button>
@@ -58,14 +70,11 @@ function App() {
                 );
               } else {
                 return (
-                  // <Link to={"/addorder/" + book.id}>
-                  <button
-                    className="button btn-warning btn-sm btn-block"
-                    onClick={() => addOrder(book.id)}
-                  >
-                    Rent
-                  </button>
-                  // </Link>
+                  <Link to={"/viewarticle/" + article.id}>
+                    <button className="button btn-warning btn-sm btn-block">
+                      View Article
+                    </button>
+                  </Link>
                 );
               }
             })()}
@@ -77,17 +86,23 @@ function App() {
 
   return (
     <div className="table-container">
-      <h5>Books</h5>
-      <table className="table table-bordered">
+      <h5>Articles</h5>
+
+      <div className="col-md-2">
+        <input
+          type="text"
+          className="search form-control mb-3"
+          placeholder="Search Article"
+        />
+      </div>
+
+      <table className="table table-bordered" id="articletable">
         <thead>
           <tr>
             <th>ID</th>
-
             <th>Title</th>
-            <th>Author</th>
-            <th>Page</th>
-            <th>Language</th>
-            <th>Publisher ID</th>
+            <th>Content</th>
+            <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
