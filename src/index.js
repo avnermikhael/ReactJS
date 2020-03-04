@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import About from "./components/about";
 import Notfound from "./components/notfound";
 import Main from "./components/main";
@@ -17,12 +17,12 @@ import "./App.css";
 import Logout from "./components/logout";
 import Showalluser from "./components/showalluser";
 import Editrole from "./components/editrole";
-// import setAuthToken from "./components/setauthtoken";
-import Showorder from "./components/showorder";
-import Showuserorder from "./components/showuserorder";
 import Postarticle from "./components/postarticle";
 import Updatearticle from "./components/updatearticle";
 import Viewarticle from "./components/viewarticle";
+import Allarticles from "./components/allarticles";
+import Postcomment from "./components/postcomment";
+import Reviewcomments from "./components/reviewcomments";
 // ReactDOM.render(<App />, document.getElementById("root"));
 
 const role = localStorage.getItem("jwtRole");
@@ -41,12 +41,14 @@ const routing = (
                 <Route path="/about" component={About} />
                 <Route path="/viewarticle/:id" component={Viewarticle} />
                 <Route path="/axios" component={Axios} />
+                <Route path="/reviewcomments" component={Reviewcomments} />
                 <Route path="/showalluser" component={Showalluser} />
                 <Route path="/updatearticle/:id" component={Updatearticle} />
                 <Route path="/signin" component={Signin} />
                 <Route path="/logout" component={Logout} />
                 <Route path="/editrole/:id" component={Editrole} />
-                <Route path="/showuserorder/:id" component={Showuserorder} />
+                <Route path="/allarticles" component={Allarticles} />
+                <Route path="/postcomment/:id" component={Postcomment} />
 
                 <Route component={Notfound} />
               </Switch>
@@ -60,9 +62,9 @@ const routing = (
                 <Route path="/about" component={About} />
                 <Route path="/axios" component={Axios} />
                 <Route path="/viewarticle/:id" component={Viewarticle} />
-
+                <Route path="/allarticles" component={Allarticles} />
                 <Route path="/postarticle" component={Postarticle} />
-                <Route path="/showorder" component={Showorder} />
+                <Route path="/postcomment/:id" component={Postcomment} />
                 <Route path="/logout" component={Logout} />
                 <Route component={Notfound} />
               </Switch>
@@ -74,9 +76,8 @@ const routing = (
                 <Route path="/home" component={Home} />
                 <Route path="/signin" component={Signin} />
                 <Route path="/register" component={Form} />
-                <Route path="/axios" component={Axios} />
+                <Route path="/allarticles" component={Allarticles} />
                 <Route path="/viewarticle/:id" component={Viewarticle} />
-
                 <Route component={Notfound} />
               </Switch>
             );

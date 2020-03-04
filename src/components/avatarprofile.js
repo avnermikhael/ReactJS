@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../img/avner.jpg";
 
-function avatar(props) {
+function avatar() {
   return <img src={Logo} alt="user" />;
 }
 

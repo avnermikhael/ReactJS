@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 
 function App() {
   const url = "http://localhost:8080/users";
-
   const [data, setData] = useState({ data: [] });
+
   useEffect(() => {
     axios.get(url).then(json => setData(json.data));
   }, []);
-
-  // const role_id = localStorage.getItem("jwtId");
 
   const renderTable = () => {
     return data.data.map(user => {
@@ -24,14 +22,12 @@ function App() {
             {(() => {
               if (user.admin === true) {
                 return (
-                  // <Link to={"/editrole/" + user.id}>
                   <button
                     className="button btn-danger btn-sm btn-block"
                     disabled
                   >
                     Admin
                   </button>
-                  // </Link>
                 );
               } else if (user.status === false) {
                 return (

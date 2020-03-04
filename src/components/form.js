@@ -3,10 +3,6 @@ import { useForm } from "react-hook-form";
 import { Form, Label } from "reactstrap";
 import axios from "axios";
 
-// import "../../src/formcss.css";
-
-//classname="px-2"
-
 export default function App() {
   const { register, errors, handleSubmit, watch } = useForm({});
   const password = useRef({});
@@ -22,7 +18,6 @@ export default function App() {
         password: data.password
       })
       .then(alert("Register successful!"));
-    // document.getElementById("registerbookform").reset();
     window.location.replace("/signin");
   };
 

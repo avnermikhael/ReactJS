@@ -3,21 +3,12 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 function App() {
-  const userId = localStorage.getItem("jwtId");
-
-  const url = "http://localhost:8080/articles";
-  const url2 = `http://localhost:8080/article/${userId}`;
-
+  const url = "http://localhost:8080/activearticles";
+  const [data, setData] = useState({ data: [] });
   const role = localStorage.getItem("jwtRole");
 
-  const [data, setData] = useState({ data: [] });
-
   useEffect(() => {
-    if (role === "true") {
-      axios.get(url).then(json => setData(json.data));
-    } else {
-      axios.get(url2).then(json => setData(json.data));
-    }
+    axios.get(url).then(json => setData(json.data));
   }, []);
 
   function onDelete(id) {
@@ -27,37 +18,42 @@ function App() {
     window.location.reload(false);
   }
 
+  function onSuspend(id) {
+    axios
+      .request({
+        method: "put",
+        url: `http://localhost:8080/suspendarticles/${id}`
+      })
+      .then(alert("Article Suspended!"));
+    window.location.reload(false);
+  }
+
   const renderTable = () => {
     return data.data.map(article => {
       return (
         <tr key={article.id}>
-          <td>{article.id}</td>
-          <td>{article.title}</td>
-          <td>{article.content}</td>
           <td>
-            {(() => {
-              if (article.status === true) {
-                return <span class="badge badge-success">Active</span>;
-              } else {
-                return (
-                  <span class="badge badge-danger">
-                    "Inactive / Awaiting Admin Review"
-                  </span>
-                );
-              }
-            })()}
+            {article.title} <br /> by: <b>{article.user.username}</b>
           </td>
-
+          <td>{article.content}</td>
           <td>
             {(() => {
               if (role === "true") {
                 return (
                   <>
-                    <Link to={"/updatearticle/" + article.id}>
-                      <button className="button btn-warning btn-sm btn-block mb-2">
-                        Review
+                    <Link to={"/viewarticle/" + article.id}>
+                      <button className="button btn-secondary btn-sm btn-block mb-2">
+                        Read
                       </button>
                     </Link>
+
+                    <button
+                      className="button btn-warning btn-sm btn-block mb-2"
+                      onClick={() => onSuspend(article.id)}
+                    >
+                      Suspend
+                    </button>
+
                     <button
                       className="button btn-danger btn-sm btn-block"
                       onClick={() => onDelete(article.id)}
@@ -95,15 +91,7 @@ function App() {
       </div>
 
       <table className="table table-bordered" id="articletable">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Content</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+        <thead></thead>
         <tbody>{renderTable()}</tbody>
       </table>
     </div>

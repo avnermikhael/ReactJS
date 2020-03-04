@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Form } from "reactstrap";
 import axios from "axios";
-// import setAuthToken from "./setauthtoken";
-import jwt from "jsonwebtoken";
 
 export default function App() {
   const [form, setValues] = useState({
@@ -13,7 +11,7 @@ export default function App() {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const result = await axios
+      await axios
         .post("http://localhost:8080/login", {
           username: form.username,
           password: form.password
@@ -26,8 +24,6 @@ export default function App() {
           localStorage.setItem("jwtToken", token);
           localStorage.setItem("jwtId", id_user);
 
-          // setAuthToken(token);
-          // console.log(jwt.decode(token));
           window.location.replace("/");
         });
     } catch (err) {

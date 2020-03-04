@@ -59,6 +59,20 @@ p {
   overflow: hidden;
 }
 
+.comment-container {
+  background-color: #262627;
+  border-radius: 25px;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.35);
+  color: #b3b8cd;
+  padding: 30px 0 0;
+  position: relative;
+  width: 200px;
+  max-width: 100%;
+  text-align: center;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
 .card-container {
   background-color: #262627;
   border-radius: 25px;
@@ -118,22 +132,47 @@ button.primary.ghost {
 .article-content {
   background-color: #e1e7e6;
   text-align: justify;
-  padding: 5px;
-  margin-top: 20px;
+  padding: 20px;
+  margin-top: 30px;
   margin-bottom: 20px;
-
+  height: 200px;
   width: 1000px;
   max-width: 100%;
+  border-radius: 25px;
 }
 
 .article-title {
-  background-color: #e1e7e6;
+  background-color: #20ad96;
   text-align: center;
   padding: 5px;
-  margin-top: 20px;
+  margin-top: 100px;
   margin-bottom: 20px;
   width: 1000px;
   max-width: 100%;
+  border-radius: 25px;
+}
+
+.comment-title {
+  background-color: #83ce22;
+  text-align: center;
+  padding: 5px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 1000px;
+  max-width: 100%;
+  border-radius: 25px;
+}
+
+.comment-content {
+  background-color: #83ce22;
+  text-align: left;
+  padding: 20px;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  height: 100px;
+  width: 1000px;
+  max-width: 100%;
+  border-radius: 25px;
 }
 
 .skills ul {

@@ -44,9 +44,7 @@ class EditArticle extends Component {
         url: `http://localhost:8080/articles/${articleId}`,
         data: newArticle
       })
-      .then(response => {
-        this.props.history.push("/axios");
-      })
+      .then(this.props.history.push("/axios"))
       .catch(err => console.log(err));
   }
 
@@ -84,6 +82,7 @@ class EditArticle extends Component {
               type="text"
               name="title"
               ref="title"
+              readOnly
             />
           </div>
 
@@ -94,6 +93,7 @@ class EditArticle extends Component {
               value={this.state.content}
               rows="10"
               cols="50"
+              readOnly
             />
           </div>
           <input type="submit" id="submit" value="Publish Article" />

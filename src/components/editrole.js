@@ -37,16 +37,13 @@ class EditRole extends Component {
 
   editUser(newUser) {
     let userId = this.props.match.params.id;
-    // console.log(newUser);
     axios
       .request({
         method: "put",
         url: `http://localhost:8080/users/${userId}`,
         data: newUser
       })
-      .then(response => {
-        this.props.history.push("/showalluser");
-      })
+      .then(this.props.history.push("/showalluser"))
       .catch(err => console.log(err));
   }
 
