@@ -26,15 +26,26 @@ function App() {
     axios
       .delete(`http://localhost:8080/articles/${id}`)
       .then(alert("Article deleted!"));
-    window.location.reload(false);
+    window.location.reload();
   }
 
   const renderTable = () => {
     return data.data.map(article => {
       return (
         <tr key={article.id}>
-          <td>{article.title}</td>
-          <td>{article.content}</td>
+          {(() => {
+            if (role === "true") {
+              return (
+                <td>
+                  {article.title} <br /> by: <b>{article.user.username}</b>
+                </td>
+              );
+            } else {
+              return <td>{article.title}</td>;
+            }
+          })()}
+
+          <td id="textlimit">{article.content}</td>
           <td>
             {(() => {
               if (article.status === true) {
@@ -55,7 +66,7 @@ function App() {
                 return (
                   <>
                     <Link to={"/updatearticle/" + article.id}>
-                      <button className="button btn-warning btn-sm btn-block mb-2">
+                      <button className="button btn-info btn-sm btn-block mb-2">
                         Review
                       </button>
                     </Link>
@@ -70,8 +81,8 @@ function App() {
               } else {
                 return (
                   <Link to={"/viewarticle/" + article.id}>
-                    <button className="button btn-warning btn-sm btn-block">
-                      View Article
+                    <button className="button btn-info btn-sm btn-block">
+                      Read
                     </button>
                   </Link>
                 );
@@ -100,7 +111,7 @@ function App() {
                 />
               </div>
 
-              <table className="table table-bordered" id="articletable">
+              <table className="table" id="articletable">
                 <thead>
                   <tr>
                     <th>Title</th>

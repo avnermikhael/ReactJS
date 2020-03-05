@@ -14,7 +14,6 @@ function App() {
     return data.data.map(user => {
       return (
         <tr key={user.id}>
-          <td>{user.id}</td>
           <td>{user.name}</td>
           <td>{user.username}</td>
           <td>{user.email}</td>
@@ -33,7 +32,7 @@ function App() {
                 return (
                   <>
                     <Link to={"/editrole/" + user.id}>
-                      <button className="button btn-primary btn-sm btn-block mb-2">
+                      <button className="button btn-success btn-sm btn-block mb-2">
                         Activate User
                       </button>
                     </Link>
@@ -61,7 +60,6 @@ function App() {
       <table className="table table-bordered">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Name</th>
             <th>Username</th>
             <th>Email</th>

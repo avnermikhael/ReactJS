@@ -2,22 +2,43 @@ import React, { Component } from "react";
 import axios from "axios";
 // import { FormGroup } from "reactstrap";
 
-class PostArticle extends Component {
+class PostFullArticle extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: ""
+      article: {
+        content: ""
+      },
+      upload: {
+        uploading: false,
+        images: []
+      }
     };
-
+    this.updateFile = this.updateFile.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  postArticle(newArticle) {
+  updateFile(e) {
+    const files = Array.from(e.target.files);
+    this.setState({ upload: { uploading: true } });
+
+    const formData = new FormData();
+
+    files.forEach((file, i) => {
+      formData.append(i, file);
+    });
+  }
+
+  postArticle(newArticle, newImage) {
     const userId = localStorage.getItem("jwtId");
+    console.log(newImage);
+    // data.append("file", newImage.file);
+    // axios.post(`http://localhost:8080/articles/${userId}`, { newArticle });
     axios
-      .post(`http://localhost:8080/articles/${userId}`, { newArticle })
+      .post(`http://localhost:8080/upload`, newImage)
+
       .then(alert("Article posted, awaiting admin review"));
-    window.location.reload();
+    // window.location.reload();
   }
 
   onSubmit(e) {
@@ -25,7 +46,11 @@ class PostArticle extends Component {
       title: this.refs.title.value,
       content: this.refs.content.value
     };
-    this.postArticle(newArticle);
+    const newImage = {
+      file: this.refs.image.file
+    };
+
+    this.postArticle(newArticle, newImage);
     e.preventDefault();
   }
 
@@ -35,7 +60,9 @@ class PostArticle extends Component {
     const name = target.name;
 
     this.setState({
-      [name]: value
+      article: {
+        [name]: value
+      }
     });
   }
 
@@ -69,6 +96,17 @@ class PostArticle extends Component {
               placeholder="Write your article"
             />
           </div>
+
+          <div className="form-group">
+            <input
+              type="file"
+              name="image"
+              className="form-control-file"
+              ref="image"
+              onChange={this.updateFile}
+            />
+          </div>
+
           <input type="submit" value="Publish Article" className="btn" />
         </form>
       </div>
@@ -76,4 +114,4 @@ class PostArticle extends Component {
   }
 }
 
-export default PostArticle;
+export default PostFullArticle;

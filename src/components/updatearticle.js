@@ -44,7 +44,7 @@ class EditArticle extends Component {
         url: `http://localhost:8080/articles/${articleId}`,
         data: newArticle
       })
-      .then(this.props.history.push("/axios"))
+      .then(window.location.replace("/axios"))
       .catch(err => console.log(err));
   }
 
@@ -99,7 +99,7 @@ class EditArticle extends Component {
           <input type="submit" id="submit" value="Publish Article" />
         </form>
         <button
-          className="button btn-warning btn-sm btn-block"
+          className="button btn-info btn-m  btn-block"
           onClick={this.props.history.goBack}
         >
           Return

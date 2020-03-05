@@ -101,7 +101,11 @@ export default function App() {
           />
           {errors.password_repeat && <p>{errors.password_repeat.message}</p>}
         </div>
-        <input type="submit" onClick={handleSubmit(onSubmit)} />
+        <input
+          type="submit"
+          value="Register"
+          onClick={handleSubmit(onSubmit)}
+        />
       </Form>
     </div>
   );

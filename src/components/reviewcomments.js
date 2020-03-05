@@ -30,12 +30,11 @@ function App() {
     return data.data.map(comment => {
       return (
         <tr key={comment.id}>
-          <td>{comment.id}</td>
           <td>{comment.user.username}</td>
           <td>{comment.content}</td>
           <td>
             <button
-              className="button btn-success btn-sm btn-block mb-2"
+              className="button btn-info btn-sm btn-block mb-2"
               onClick={() => onApprove(comment.id)}
             >
               Approve
@@ -64,12 +63,11 @@ function App() {
         />
       </div>
 
-      <table className="table table-bordered" id="articletable">
+      <table className="table" id="articletable">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Username</th>
-            <th>Content</th>
+            <th>Comment</th>
             <th>Action</th>
           </tr>
         </thead>

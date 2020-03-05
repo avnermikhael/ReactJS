@@ -62,7 +62,7 @@ export default function App() {
           />
         </div>
 
-        <input type="submit" />
+        <input type="submit" value="Login" class="submit-btn" />
       </Form>
     </div>
   );

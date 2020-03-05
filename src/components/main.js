@@ -10,7 +10,7 @@ const Main = props => {
         <Col>{props.children}</Col>
         <footer className="py-4">
           <div className="container text-center">
-            <span className="text-muted">Copyright @Avner</span>
+            <span>Copyright @Avner</span>
           </div>
         </footer>
       </Container>

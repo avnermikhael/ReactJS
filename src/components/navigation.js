@@ -138,6 +138,12 @@ const Navigation = () => {
             </NavItem>
 
             <NavItem>
+              <NavLink to="/postfullarticle" tag={RRNavLink}>
+                Upload Image
+              </NavLink>
+            </NavItem>
+
+            <NavItem>
               <NavLink to="/allarticles" tag={RRNavLink}>
                 Read Articles
               </NavLink>

@@ -15,7 +15,7 @@ function App() {
     axios
       .delete(`http://localhost:8080/articles/${id}`)
       .then(alert("Article deleted!"));
-    window.location.reload(false);
+    window.location.reload();
   }
 
   function onSuspend(id) {
@@ -35,14 +35,14 @@ function App() {
           <td>
             {article.title} <br /> by: <b>{article.user.username}</b>
           </td>
-          <td>{article.content}</td>
+          <td id="textlimit">{article.content}</td>
           <td>
             {(() => {
               if (role === "true") {
                 return (
                   <>
                     <Link to={"/viewarticle/" + article.id}>
-                      <button className="button btn-secondary btn-sm btn-block mb-2">
+                      <button className="button btn-info btn-sm btn-block mb-2">
                         Read
                       </button>
                     </Link>
@@ -90,7 +90,7 @@ function App() {
         />
       </div>
 
-      <table className="table table-bordered" id="articletable">
+      <table className="table" id="articletable">
         <thead></thead>
         <tbody>{renderTable()}</tbody>
       </table>
