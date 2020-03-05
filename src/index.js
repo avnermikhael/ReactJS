@@ -23,6 +23,7 @@ import Viewarticle from "./components/viewarticle";
 import Allarticles from "./components/allarticles";
 import Postcomment from "./components/postcomment";
 import Reviewcomments from "./components/reviewcomments";
+import Uploadfiles from "./components/uploadfiles";
 // ReactDOM.render(<App />, document.getElementById("root"));
 
 const role = localStorage.getItem("jwtRole");
@@ -78,6 +79,9 @@ const routing = (
                 <Route path="/register" component={Form} />
                 <Route path="/allarticles" component={Allarticles} />
                 <Route path="/viewarticle/:id" component={Viewarticle} />
+                <Route path="/viewarticle/:id" component={Viewarticle} />
+                <Route path="/uploadfiles" component={Uploadfiles} />
+
                 <Route component={Notfound} />
               </Switch>
             );

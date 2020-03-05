@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import axios from "axios";
+import { FormGroup } from "reactstrap";
 
 class PostArticle extends Component {
   constructor(props) {

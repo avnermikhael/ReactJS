@@ -15,8 +15,10 @@ function App() {
   useEffect(() => {
     if (role === "true") {
       axios.get(url).then(json => setData(json.data));
+      console.log(data);
     } else {
       axios.get(url2).then(json => setData(json.data));
+      console.log(data);
     }
   }, []);
 
@@ -31,7 +33,6 @@ function App() {
     return data.data.map(article => {
       return (
         <tr key={article.id}>
-          <td>{article.id}</td>
           <td>{article.title}</td>
           <td>{article.content}</td>
           <td>
@@ -84,28 +85,38 @@ function App() {
 
   return (
     <div className="table-container">
-      <h5>Articles</h5>
+      {/* {console.log(data.data[0])} */}
+      {(() => {
+        if (data.data[0]) {
+          return (
+            <>
+              <h5>Articles</h5>
 
-      <div className="col-md-2">
-        <input
-          type="text"
-          className="search form-control mb-3"
-          placeholder="Search Article"
-        />
-      </div>
+              <div className="col-md-2">
+                <input
+                  type="text"
+                  className="search form-control mb-3"
+                  placeholder="Search Article"
+                />
+              </div>
 
-      <table className="table table-bordered" id="articletable">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Content</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>{renderTable()}</tbody>
-      </table>
+              <table className="table table-bordered" id="articletable">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>{renderTable()}</tbody>
+              </table>
+            </>
+          );
+        } else {
+          return <h1>No Article Created Yet</h1>;
+        }
+      })()}
     </div>
   );
 }

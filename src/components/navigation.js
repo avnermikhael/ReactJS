@@ -40,6 +40,12 @@ const Navigation = () => {
                 Read Articles
               </NavLink>
             </NavItem>
+
+            <NavItem>
+              <NavLink to="/uploadfiles" tag={RRNavLink}>
+                Upload Test
+              </NavLink>
+            </NavItem>
           </Nav>
         </Collapse>
       </nav>
