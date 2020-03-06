@@ -43,7 +43,7 @@ class EditRole extends Component {
         url: `http://localhost:8080/users/${userId}`,
         data: newUser
       })
-      .then(this.props.history.push("/showalluser"))
+      .then(window.location.replace("/showalluser"))
       .catch(err => console.log(err));
   }
 

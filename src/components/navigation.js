@@ -19,7 +19,7 @@ const Navigation = () => {
   if (!token) {
     return (
       <nav className="navbar navbar-expand-xl fixed-top navbar-dark bg-dark">
-        <NavbarBrand>Travel Time</NavbarBrand>
+        <NavbarBrand href={"/home"}>Travel Time</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -53,7 +53,7 @@ const Navigation = () => {
   } else if (token && role === "true") {
     return (
       <nav className="navbar navbar-expand-xl fixed-top navbar-dark bg-dark">
-        <NavbarBrand href={"/"}>Travel Time</NavbarBrand>
+        <NavbarBrand href={"/home"}>Travel Time</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -109,7 +109,7 @@ const Navigation = () => {
   } else {
     return (
       <nav className="navbar navbar-expand-xl fixed-top navbar-dark bg-dark">
-        <NavbarBrand href={"/"}>Travel Time</NavbarBrand>
+        <NavbarBrand href={"/home"}>Travel Time</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>

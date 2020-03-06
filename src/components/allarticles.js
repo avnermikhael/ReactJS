@@ -90,7 +90,7 @@ function App() {
         />
       </div>
 
-      <table className="table" id="articletable">
+      <table className="table" id="commontable">
         <thead></thead>
         <tbody>{renderTable()}</tbody>
       </table>

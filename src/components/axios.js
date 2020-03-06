@@ -111,7 +111,7 @@ function App() {
                 />
               </div>
 
-              <table className="table" id="articletable">
+              <table className="table" id="commontable">
                 <thead>
                   <tr>
                     <th>Title</th>
