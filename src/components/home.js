@@ -7,21 +7,21 @@ const Home = () => {
     <div className="card-container">
       <Avatar />
       <h3>Travel Time </h3>
-      <h6>World Best Travel Site</h6>
+      <h6>Backpacker Travel Blog</h6>
       <p>
         <Bio />
       </p>
 
       <div className="skills">
-        <h6>Albums</h6>
+        <h6>Top Posts</h6>
         <ul>
-          <li>Taylor Swift (2006)</li>
-          <li>Fearless (2008)</li>
-          <li>Speak Now (2010)</li>
-          <li>Red (2012)</li>
-          <li>1989 (2014)</li>
-          <li>Reputation (2017)</li>
-          <li>Lover (2019)</li>
+          <li>India</li>
+          <li>Switzerland</li>
+          <li>New Zealand</li>
+          <li>Thailand</li>
+          <li>Indonesia</li>
+          <li>Japan</li>
+          <li>South Korea</li>
         </ul>
       </div>
     </div>

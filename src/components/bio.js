@@ -5,13 +5,11 @@ function bio(props) {
     <div>
       <h7>
         <p align="justify" className="mx-4">
-          Taylor Alison Swift (born December 13, 1989) is an American
-          singer-songwriter. She is known for narrative songs about her personal
-          life, which have received widespread media coverage. At age 14, Swift
-          became the youngest artist signed by the Sony/ATV Music publishing
-          house and, at age 15, she signed her first record deal. Her 2006
-          eponymous debut album was the longest-charting album of the 2000s in
-          the US.
+          Traveling around the world at once is often a cheaper option than
+          breaking it down into segments. The secret is to plan carefully and
+          purchase the ticket well in advance. The cost is more than made up for
+          by the amazing experience of seeing many places in a short period of
+          time and the memories you'll have for a lifetime.
         </p>
       </h7>
     </div>
