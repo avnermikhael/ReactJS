@@ -25,70 +25,32 @@ import Postcomment from "./components/postcomment";
 import Reviewcomments from "./components/reviewcomments";
 import Uploadfiles from "./components/uploadfiles";
 import Postfullarticle from "./components/postfullarticle";
+import PostArticle from "./components/postarticle";
 // ReactDOM.render(<App />, document.getElementById("root"));
 
-const role = localStorage.getItem("jwtRole");
+// const role = localStorage.getItem("jwtRole");
 
 const routing = (
   <Router>
     <Switch>
       <Main>
-        {(() => {
-          if (role === "true") {
-            return (
-              <Switch>
-                <Route exact path="/" component={Home} />
+        <Switch>
+          {/* <Route exact path="/" component={Home} />
                 <Route path="/home" component={Home} />
                 <Route path="/profile" component={Userprofile} />
                 <Route path="/about" component={About} />
-                <Route path="/viewarticle/:id" component={Viewarticle} />
-                <Route path="/axios" component={Axios} />
-                <Route path="/reviewcomments" component={Reviewcomments} />
+                <Route path="/viewarticle/:id" component={Viewarticle} /> */}
+          <Route path="/postarticle" component={PostArticle} />
+          {/* <Route path="/reviewcomments" component={Reviewcomments} />
                 <Route path="/showalluser" component={Showalluser} />
                 <Route path="/updatearticle/:id" component={Updatearticle} />
                 <Route path="/signin" component={Signin} />
                 <Route path="/logout" component={Logout} />
-                <Route path="/editrole/:id" component={Editrole} />
-                <Route path="/allarticles" component={Allarticles} />
-                <Route path="/postcomment/:id" component={Postcomment} />
-
-                <Route component={Notfound} />
-              </Switch>
-            );
-          } else if (role === "false") {
-            return (
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/home" component={Home} />
-                <Route path="/profile" component={Userprofile} />
-                <Route path="/about" component={About} />
-                <Route path="/axios" component={Axios} />
-                <Route path="/viewarticle/:id" component={Viewarticle} />
-                <Route path="/allarticles" component={Allarticles} />
-                <Route path="/postarticle" component={Postarticle} />
-                <Route path="/postfullarticle" component={Postfullarticle} />
-                <Route path="/postcomment/:id" component={Postcomment} />
-                <Route path="/logout" component={Logout} />
-                <Route component={Notfound} />
-              </Switch>
-            );
-          } else {
-            return (
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/home" component={Home} />
-                <Route path="/signin" component={Signin} />
-                <Route path="/register" component={Form} />
-                <Route path="/allarticles" component={Allarticles} />
-                <Route path="/viewarticle/:id" component={Viewarticle} />
-                <Route path="/viewarticle/:id" component={Viewarticle} />
-                <Route path="/uploadfiles" component={Uploadfiles} />
-
-                <Route component={Notfound} />
-              </Switch>
-            );
-          }
-        })()}
+                <Route path="/editrole/:id" component={Editrole} /> */}
+          <Route path="/allarticles" component={Allarticles} />
+          {/* <Route path="/postcomment/:id" component={Postcomment} /> */}
+          {/* <Route component={Notfound} /> */}
+        </Switch>
       </Main>
     </Switch>
   </Router>
