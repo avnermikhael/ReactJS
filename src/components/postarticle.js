@@ -6,26 +6,31 @@ class PostArticle extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: ""
+      // content: ""
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  postArticle(newArticle) {
-    const userId = localStorage.getItem("jwtId");
+  postArticle(newActivity) {
+    // const userId = localStorage.getItem("jwtId");
+    console.log(newActivity);
     axios
-      .post(`http://localhost:8080/articles/${userId}`, { newArticle })
-      .then(alert("Article posted, awaiting admin review"));
-    window.location.reload();
+      .post(`http://localhost:8080/addactivity`, { newActivity })
+      .then(alert("Activity posted!"));
+    window.location("/allarticles");
   }
 
   onSubmit(e) {
-    const newArticle = {
-      title: this.refs.title.value,
-      content: this.refs.content.value
+    const newActivity = {
+      date: this.refs.date.value,
+      activity: this.refs.activity.value,
+      duration: this.refs.duration.value,
+      details: this.refs.details.value,
+      weight: this.refs.detail.value
     };
-    this.postArticle(newArticle);
+    console.log(newActivity);
+    this.postArticle(newActivity);
     e.preventDefault();
   }
 
@@ -42,7 +47,7 @@ class PostArticle extends Component {
   render() {
     return (
       <div class="card-container">
-        <h4>Post New Article</h4>
+        <h4>Masukkan Kegiatan Baru</h4>
         <form
           onSubmit={this.onSubmit.bind(this)}
           id="updatebookform"
@@ -51,14 +56,54 @@ class PostArticle extends Component {
           <div className="form-group">
             <input
               onChange={this.handleInputChange}
-              type="text"
-              name="title"
-              ref="title"
-              placeholder="Title"
+              type="date"
+              name="date"
+              ref="date"
+              placeholder="Tanggal"
             />
           </div>
 
           <div className="form-group">
+            <select name="activity" ref="activity">
+              <option value="Tidur">Tidur</option>
+              <option value="Makan">Makan</option>
+              <option value="Olahraga">Olahraga</option>
+              <option value="Aktifitas Lain">Aktifitas Lain</option>
+            </select>
+          </div>
+
+          <div className="form-group">
+            <input
+              onChange={this.handleInputChange}
+              type="text"
+              name="duration"
+              ref="durations"
+              placeholder="Durasi"
+            />
+          </div>
+
+          <div className="form-group">
+            <input
+              onChange={this.handleInputChange}
+              type="text"
+              name="details"
+              ref="details"
+              placeholder="Keterangan"
+            />
+          </div>
+
+          <div className="form-group">
+            <input
+              onChange={this.handleInputChange}
+              type="number"
+              name="weight"
+              ref="weight"
+              step=".01"
+              placeholder="Berat Badan"
+            />
+          </div>
+
+          {/* <div className="form-group">
             <textarea
               name="content"
               ref="content"
@@ -68,8 +113,9 @@ class PostArticle extends Component {
               cols="47"
               placeholder="Write your article"
             />
-          </div>
-          <input type="submit" value="Publish Article" className="btn" />
+          </div> */}
+
+          <input type="submit" value="Tambahkan Kegiatan" className="btn" />
         </form>
       </div>
     );
