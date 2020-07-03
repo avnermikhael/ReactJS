@@ -5,27 +5,13 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import About from "./components/about";
 import Notfound from "./components/notfound";
 import Main from "./components/main";
-import Userprofile from "./components/userprofile";
-import Home from "./components/home";
-import Form from "./components/form";
-import Axios from "./components/axios";
-import Signin from "./components/signin";
 import "./App.css";
-import Logout from "./components/logout";
-import Showalluser from "./components/showalluser";
-import Editrole from "./components/editrole";
-import Postarticle from "./components/postarticle";
 import Updatearticle from "./components/updatearticle";
-import Viewarticle from "./components/viewarticle";
-import Allarticles from "./components/allarticles";
-import Postcomment from "./components/postcomment";
-import Reviewcomments from "./components/reviewcomments";
-import Uploadfiles from "./components/uploadfiles";
-import Postfullarticle from "./components/postfullarticle";
-import PostArticle from "./components/postarticle";
+import Allactivities from "./components/activities";
+import Addactivity from "./components/addactivity";
+import Charts from "./components/charts";
 // ReactDOM.render(<App />, document.getElementById("root"));
 
 // const role = localStorage.getItem("jwtRole");
@@ -35,20 +21,11 @@ const routing = (
     <Switch>
       <Main>
         <Switch>
-          {/* <Route exact path="/" component={Home} />
-                <Route path="/home" component={Home} />
-                <Route path="/profile" component={Userprofile} />
-                <Route path="/about" component={About} />
-                <Route path="/viewarticle/:id" component={Viewarticle} /> */}
-          <Route path="/postarticle" component={PostArticle} />
-          {/* <Route path="/reviewcomments" component={Reviewcomments} />
-                <Route path="/showalluser" component={Showalluser} />
-                <Route path="/updatearticle/:id" component={Updatearticle} />
-                <Route path="/signin" component={Signin} />
-                <Route path="/logout" component={Logout} />
-                <Route path="/editrole/:id" component={Editrole} /> */}
-          <Route path="/allarticles" component={Allarticles} />
-          {/* <Route path="/postcomment/:id" component={Postcomment} /> */}
+          <Route path="/addactivity" component={Addactivity} />
+          <Route path="/allactivities" component={Allactivities} />
+          <Route path="/charts" component={Charts} />
+          <Route path="/updatearticle/:id" component={Updatearticle} />
+
           {/* <Route component={Notfound} /> */}
         </Switch>
       </Main>

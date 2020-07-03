@@ -13,9 +13,6 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
-  // const token = localStorage.getItem("jwtToken");
-  // const role = localStorage.getItem("jwtRole");
-
   return (
     <nav className="navbar navbar-expand-xl fixed-top navbar-dark bg-dark">
       <NavbarBrand href={"/home"}>BSP</NavbarBrand>
@@ -29,14 +26,20 @@ const Navigation = () => {
           </NavItem> */}
 
           <NavItem>
-            <NavLink to="/postarticle" tag={RRNavLink}>
-              Tambahkan Kegiatan
+            <NavLink to="/allactivities" tag={RRNavLink}>
+              Kegiatan
             </NavLink>
           </NavItem>
 
           <NavItem>
-            <NavLink to="/allarticles" tag={RRNavLink}>
-              Kegiatan
+            <NavLink to="/charts" tag={RRNavLink}>
+              Grafik Info
+            </NavLink>
+          </NavItem>
+
+          <NavItem>
+            <NavLink to="/addactivity" tag={RRNavLink}>
+              Tambahkan Kegiatan
             </NavLink>
           </NavItem>
         </Nav>

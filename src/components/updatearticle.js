@@ -1,58 +1,68 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class EditArticle extends Component {
+class EditActivity extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "",
-      content: "",
-      status: ""
+      date: "",
+      activity: "",
+      duration: "",
+      details: "",
+      weight: ""
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   componentWillMount() {
-    this.getArticleDetails();
+    this.getActivityDetails();
   }
 
-  getArticleDetails() {
-    let articleId = this.props.match.params.id;
+  getActivityDetails() {
+    let activityId = this.props.match.params.id;
     axios
-      .get(`http://localhost:8080/articles/${articleId}`)
+      .get(`http://localhost:8080/activity/${activityId}`)
       .then(response => {
         this.setState(
           {
-            title: response.data.data.title,
-            content: response.data.data.content,
-            status: response.data.data.status
+            date: response.data.data[0].date,
+            activity: response.data.data[0].activity,
+            duration: response.data.data[0].duration,
+            details: response.data.data[0].details,
+            weight: response.data.data[0].weight
           },
           () => {
-            console.log(this.state);
+            // console.log(moment(this.state.date).format("YYYY/MM/DD"));
           }
         );
       })
       .catch(err => console.log(err));
   }
 
-  editArticle(newArticle) {
-    let articleId = this.props.match.params.id;
+  editActivity(newActivity) {
+    let activityId = this.props.match.params.id;
     axios
       .request({
         method: "put",
-        url: `http://localhost:8080/articles/${articleId}`,
-        data: newArticle
+        url: `http://localhost:8080/updateactivity/${activityId}`,
+        data: newActivity
       })
-      .then(window.location.replace("/axios"))
+      .then(response => {
+        this.props.history.push("/allarticles");
+      })
       .catch(err => console.log(err));
   }
 
   onSubmit(e) {
-    const newArticle = {
-      status: true
+    const newActivity = {
+      date: this.refs.date.value,
+      activity: this.refs.activity.value,
+      duration: this.refs.duration.value,
+      details: this.refs.details.value,
+      weight: this.refs.weight.value
     };
-    this.editArticle(newArticle);
+    this.editActivity(newActivity);
     e.preventDefault();
   }
 
@@ -69,44 +79,77 @@ class EditArticle extends Component {
   render() {
     return (
       <div class="card-container">
-        <h4>Review Article</h4>
+        <h4>Update Activity</h4>
         <form
           onSubmit={this.onSubmit.bind(this)}
-          id="updatebookform"
+          id="registerbookform"
           className="px-3 pb-4"
         >
           <div className="form-group">
+            <label for="datelabel">Tanggal</label>
             <input
               onChange={this.handleInputChange}
-              value={this.state.title}
-              type="text"
-              name="title"
-              ref="title"
-              readOnly
+              value={this.state.date}
+              type="date"
+              name="date"
+              ref="date"
             />
           </div>
 
           <div className="form-group">
-            <textarea
-              name="content"
-              ref="content"
-              value={this.state.content}
-              rows="10"
-              cols="50"
-              readOnly
+            <label for="activitylabel">Aktifitas</label>
+            <select
+              name="activity"
+              ref="activity"
+              onChange={this.handleInputChange}
+              value={this.state.activity}
+            >
+              <option value="Tidur">Tidur</option>
+              <option value="Makan">Makan</option>
+              <option value="Olahraga">Olahraga</option>
+              <option value="Aktifitas Lain">Aktifitas Lain</option>
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label for="durationlabel">Durasi</label>
+            <input
+              type="number"
+              value={this.state.duration}
+              name="duration"
+              ref="duration"
+              onChange={this.handleInputChange}
+              // onClick="this.value=''"
             />
           </div>
-          <input type="submit" id="submit" value="Publish Article" />
+          <div className="form-group">
+            <label for="detailslabel">Keterangan</label>
+            <input
+              type="text"
+              value={this.state.details}
+              name="details"
+              ref="details"
+              onChange={this.handleInputChange}
+              // onClick="this.value=''"
+            />
+          </div>
+          <div className="form-group">
+            <label for="weightlabel">Berat Badan</label>
+            <input
+              type="number"
+              step=".01"
+              value={this.state.weight}
+              name="weight"
+              ref="weight"
+              onChange={this.handleInputChange}
+              // onClick="this.value=''"
+            />
+          </div>
+          <input type="submit" value="Save" className="btn" />
         </form>
-        <button
-          className="button btn-info btn-m  btn-block"
-          onClick={this.props.history.goBack}
-        >
-          Return
-        </button>
       </div>
     );
   }
 }
 
-export default EditArticle;
+export default EditActivity;
